@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">5</div>
+<div class="counter">19</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.028s</div>
+<div class="counter">0.057s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,19 +78,19 @@
 <tr>
 <td class="success">#addChore &gt; When adding a chore &gt; When the chore already exists &gt; Throw an exception</td>
 <td class="success">addChoreWhenAddingAChoreWhenTheChoreAlreadyExistsThrowAnException()</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">#addChore &gt; When the deadline is invalid &gt; Throw an exception</td>
 <td class="success">addChoreWhenTheDeadlineIsInvalidThrowAnException()</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addChoreWhenTheDescriptionIsInvalidThrowAnException()</td>
 <td class="success">addChoreWhenTheDescriptionIsInvalidThrowAnException()</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -102,7 +102,91 @@
 <tr>
 <td class="success">addSingleChore()</td>
 <td class="success">addSingleChore()</td>
-<td class="success">0.017s</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteChoreWhenListIsEmptyThrowAnException()</td>
+<td class="success">deleteChoreWhenListIsEmptyThrowAnException()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteChoreWhenTheListIsNotEmptyWheTheChoreDoesNotExistThrowAnException()</td>
+<td class="success">deleteChoreWhenTheListIsNotEmptyWheTheChoreDoesNotExistThrowAnException()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteChoreWhenTheListNotEmptyWheTheChoreExistsDeleteTheChore()</td>
+<td class="success">deleteChoreWhenTheListNotEmptyWheTheChoreExistsDeleteTheChore()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">#filterChores &gt; When the filter is ALL &gt; When the list is empty &gt; Return all chores</td>
+<td class="success">filterChoresWhenFilterIsAllWhenTheListIsEmptyReturnAllChores()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">#filterChores &gt; When the filtter is ALL &gt; When the list is not empty &gt; Return All chores</td>
+<td class="success">filterChoresWhenTheFilterIsAllWhenListIsNotEmptyReturnAllChores()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">filterChoresWhenTheFilterIsCompleteWhenTheListIsEmptyReturnAnEmptyList()</td>
+<td class="success">filterChoresWhenTheFilterIsCompleteWhenTheListIsEmptyReturnAnEmptyList()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">filterChoresWhenTheFilterIsCompletedWhenListIsNotEmptyReturnTheFilteredChores()</td>
+<td class="success">filterChoresWhenTheFilterIsCompletedWhenListIsNotEmptyReturnTheFilteredChores()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">filterChoresWhenTheFilterIsUncompletedWhenListIsEmptyReturnAnEmptyList()</td>
+<td class="success">filterChoresWhenTheFilterIsUncompletedWhenListIsEmptyReturnAnEmptyList()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">filterChoresWhenTheFilterIsUncompletedWhenListIsNotEmptyReturnTheFilteredChores()</td>
+<td class="success">filterChoresWhenTheFilterIsUncompletedWhenListIsNotEmptyReturnTheFilteredChores()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">toggleChoreTheDeadLineIsInvalidWhenTheStatusInUncompletedToggleTheChore()</td>
+<td class="success">toggleChoreTheDeadLineIsInvalidWhenTheStatusInUncompletedToggleTheChore()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">toggleChoreWhenTheChoreDoesNotExistThrowAnException()</td>
+<td class="success">toggleChoreWhenTheChoreDoesNotExistThrowAnException()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">toggleChoreWhenTheDeadLineIsInvalidWhenStatusIsCompletedThrowAnException()</td>
+<td class="success">toggleChoreWhenTheDeadLineIsInvalidWhenStatusIsCompletedThrowAnException()</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">toggleChoreWhenTheDeadLineIsValidToggleTheChore()</td>
+<td class="success">toggleChoreWhenTheDeadLineIsValidToggleTheChore()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">togglerChoreWhenTheDeadlineIsValidWhenToggleTheChoreTwiceToggleTheChore()</td>
+<td class="success">togglerChoreWhenTheDeadlineIsValidWhenToggleTheChoreTwiceToggleTheChore()</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -115,7 +199,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.2</a> at Sep 26, 2023, 4:13:54 PM</p>
+<a href="http://www.gradle.org">Gradle 8.2</a> at Sep 29, 2023, 3:10:26 PM</p>
 </div>
 </div>
 </body>

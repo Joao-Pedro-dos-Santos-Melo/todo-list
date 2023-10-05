@@ -1,18 +1,22 @@
 package br.edu.unifalmg.service;
 
 import br.edu.unifalmg.domain.Chore;
-import br.edu.unifalmg.exception.DuplicatedChoreException;
-import br.edu.unifalmg.exception.InvalidDeadlineException;
-import br.edu.unifalmg.exception.InvalidDescriptionException;
+import br.edu.unifalmg.domain.ChoreFilter;
+import br.edu.unifalmg.exception.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ChoreService {
 
     private List<Chore> chores;
+
+    public List<Chore> getChores(){
+        return this.chores;
+    }
 
     public ChoreService() {
         chores = new ArrayList<>();
@@ -73,4 +77,50 @@ public class ChoreService {
         return chore;
     }
 
+    public void delereChore(String descripition, LocalDate deadLine) throws ChoreNotFoundException {
+        if (this.chores.isEmpty()){
+           throw new EmptyChoreListException("Unavle to remove a chore from an empty list");
+        }
+        boolean isChoreExist = this.chores.stream().anyMatch(chore -> chore.getDescription().equals(descripition) && chore.getDeadline().equals(deadLine));
+        if(!isChoreExist){
+            throw new ChoreNotFoundException("The given chore does not exist.");
+        }else{
+            this.chores = this.chores.stream().filter(chore -> !chore.getDescription().equals(descripition) && !chore.getDeadline().equals(deadLine)).collect(Collectors.toList());
+        }
+
+    }
+
+
+    public void toggleChore(String description, LocalDate deadline) throws ChoreNotFoundException {
+        boolean isChoreExist = this.chores.stream().anyMatch(chore -> chore.getDescription().equals(description) && chore.getDeadline().equals(deadline));
+        if(!isChoreExist){
+            throw new ChoreNotFoundException("Chore not found. Impossible to toggle!");
+        }
+        this.chores = this.chores.stream().map(chore -> {
+            if (!chore.getDescription().equals(description) && !chore.getDeadline().isEqual(deadline)) {
+                return chore;
+            }
+            if (chore.getDeadline().isBefore(LocalDate.now())
+                    && chore.getIsCompleted()) {
+                throw new ToggleChoreWithInvalidDeadlineException("Unable to toggle a completed chore with a past deadline");
+            }
+            chore.setIsCompleted(!chore.getIsCompleted());
+            return chore;
+        }).collect(Collectors.toList());
+    }
+
+    public List<Chore> filterChores(ChoreFilter filter){
+        switch (filter){
+            case COMPLETED:
+                return this.chores.stream().filter(Chore::getIsCompleted).collect(Collectors.toList());
+
+            case UNCOMPLETED:
+                return this.chores.stream().filter(chore -> !chore.getIsCompleted()).collect(Collectors.toList());
+
+            case All:
+            default:
+                return this.chores;
+        }
+    }
+    //private final Predicate<List<Chore>> isChoreListEmpty = List::isEmpty;
 }

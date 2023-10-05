@@ -33,4 +33,10 @@ public class Chore {
         return this.deadline;
     }
 
+    public boolean getIsCompleted(){return this.isCompleted;}
+
+    public void setDeadline(LocalDate deadline){this.deadline = deadline;}
+
+    public void setIsCompleted(boolean isCompleted){this.isCompleted = isCompleted;}
+
 }
