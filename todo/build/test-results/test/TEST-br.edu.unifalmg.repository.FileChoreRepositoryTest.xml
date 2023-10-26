@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.edu.unifalmg.repository.FileChoreRepositoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-10-20T18:28:20" hostname="suporte-OptiPlex-3050" time="1.15">
+  <properties/>
+  <testcase name="#load &gt; When the file is found &gt; When the content is empty &gt; Return empty lsit" classname="br.edu.unifalmg.repository.FileChoreRepositoryTest" time="1.127"/>
+  <testcase name="#load &gt; OK" classname="br.edu.unifalmg.repository.FileChoreRepositoryTest" time="0.01"/>
+  <testcase name="#load &gt; When the file is not found (or path is invalid) &gt; Return an empty list" classname="br.edu.unifalmg.repository.FileChoreRepositoryTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
