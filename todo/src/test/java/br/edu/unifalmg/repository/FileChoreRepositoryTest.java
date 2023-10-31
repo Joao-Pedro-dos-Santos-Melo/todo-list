@@ -2,6 +2,7 @@ package br.edu.unifalmg.repository;
 
 import br.edu.unifalmg.domain.Chore;
 import br.edu.unifalmg.repository.impl.FileChoreRepository;
+import br.edu.unifalmg.service.ChoreService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -71,5 +72,51 @@ public class FileChoreRepositoryTest {
                 () -> assertEquals("First Chore", chores.get(0).getDescription()),
                 () -> assertEquals("Second Chore", chores.get(1).getDescription())
         );
+    }
+
+    @Test
+    @DisplayName("#save > abrir arquivo com lista vazia e adicionar algo na lista e salvar no arquivo")
+    void saveListaVaziaEscreverSalvarLista() throws IOException {
+
+        FileChoreRepository repository = new FileChoreRepository();
+        ChoreService service = new ChoreService(repository);
+        service.loadChores();
+
+        service.addChore("teste 1", LocalDate.now());
+        service.addChore("teste 2", LocalDate.now());
+        service.save();
+
+        List<Chore> chores = service.getChores();
+
+        FileChoreRepository repository2 = new FileChoreRepository();
+        ChoreService service2 = new ChoreService(repository2);
+        service2.loadChores();
+
+        List<Chore> chores2 = service2.getChores();
+
+        assertEquals(chores2.size(), chores.size());
+    }
+
+    @Test
+    @DisplayName("#save > abrir arquivo com lista e adicionar algo na lista e salvar no arquivo")
+    void saveLerListaDoArquivoAdicionarSalvarArquivo() throws IOException {
+
+        FileChoreRepository repository = new FileChoreRepository();
+        ChoreService service = new ChoreService(repository);
+        service.loadChores();
+
+        service.addChore("teste 3", LocalDate.now());
+        service.addChore("teste 4", LocalDate.now());
+        service.save();
+
+        List<Chore> chores = service.getChores();
+
+        FileChoreRepository repository2 = new FileChoreRepository();
+        ChoreService service2 = new ChoreService(repository2);
+        service2.loadChores();
+
+        List<Chore> chores2 = service2.getChores();
+
+        assertEquals(chores2.size(), chores.size());
     }
 }
