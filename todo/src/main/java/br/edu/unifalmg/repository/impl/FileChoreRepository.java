@@ -43,7 +43,7 @@ public class FileChoreRepository implements ChoreRepository {
     @Override
     public boolean save(List<Chore> chores) {
         try{
-            mapper.writeValue(new File("chores,json"), chores);
+            mapper.writeValue(new File("chores.json"), chores);
             return true;
         } catch (IOException exception){
             System.out.println("ERROR: Unable to write the chores on the file.");
